@@ -63,9 +63,9 @@ public class RetosApplication implements CommandLineRunner {
              * Repository sobre los documentos de la base de datos.
              * 
              */
-            userCrudRepository.deleteAll();
+            /*userCrudRepository.deleteAll();
             cloneCrudRepository.deleteAll();
-            orderCrudRepository.deleteAll();
+            orderCrudRepository.deleteAll();*/
             
 
             //System.out.println("Usuario: " + userCrudRepository.findTopByOrderByIdDesc().get().getName());

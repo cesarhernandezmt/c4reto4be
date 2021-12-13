@@ -95,7 +95,7 @@ public class OrderRepository {
      * @return 
      */
     public List<Order> getOrderByZone(String zone) {
-        return orderCrudRepository.findByZone(zone);
+        return orderCrudRepository.findBySalesManZone(zone);
     }
     
      /**
@@ -115,7 +115,7 @@ public class OrderRepository {
      * @return 
      */
     public List<Order> getOrderBySalesManId(Integer id) {
-        return orderCrudRepository.findBySalesManId(id);
+        return orderCrudRepository.findBySalesMan_Id(id);
     }
 
     /**
@@ -124,7 +124,7 @@ public class OrderRepository {
      * @return 
      */
     public List<Order> getOrderByRegisterDayAndSalesManId(Date registerDay, Integer id) {
-        return orderCrudRepository.findByRegisterDayAndSalesManId(registerDay, id);
+        return orderCrudRepository.findByRegisterDayAndSalesMan_Id(registerDay, id);
     }
     
     /**
@@ -134,6 +134,7 @@ public class OrderRepository {
      * @return 
      */
     public List<Order> getOrderByStatusAndSalesManId(String status, Integer id) {
-        return orderCrudRepository.findByStatusAndSalesManId(status, id);
+        return orderCrudRepository.findByStatusAndSalesMan_Id(status, id);
     }
+    
 }
