@@ -6,6 +6,8 @@ package co.usa.ciclo4.retos.service;
 
 import co.usa.ciclo4.retos.dmodel.Order;
 import co.usa.ciclo4.retos.repository.OrderRepository;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -150,7 +152,7 @@ public class OrderService {
     /**
      * Metodo para obtener y retornar una lista de todos los registros de
      * documentos de ordenes, por el valor del atributo 'zone' 
-     * hacia el metodo 'getOrderByStatus' del OrderRepository
+     * hacia el metodo 'getOrderByStatus' del OrderRepository.
      * @param status
      * @return
      */
@@ -159,7 +161,9 @@ public class OrderService {
     }
     
     /**
-     * 
+     * Metodo para obtener y retornar una lista de todos los registros de
+     * documentos de ordenes, por el valor del atributo 'salesman.id' 
+     * hacia el metodo 'getOrderBySalesManId' del OrderRepository.
      * @param id
      * @return 
      */
@@ -168,17 +172,31 @@ public class OrderService {
     }
     
     /**
-     * 
+     * Metodo para obtener y retornar una lista de todos los registros de
+     * documentos de ordenes, por los valores de los atributos 'registerDay' y
+     * 'salesman.id' hacia el metodo 'getOrderByRegisterDayAndSalesManId' del 
+     * OrderRepository. Se añade conversión del formato del valor 
+     * 'registerDay' a la forma 'aaaa-MM-dd'.
      * @param registerDay
      * @param id
      * @return 
      */
-    public List<Order> getOrderByRegisterDayAndSalesManId(Date registerDay, Integer id) {
-        return orderRepository.getOrderByRegisterDayAndSalesManId(registerDay, id);
+    public List<Order> getOrderByRegisterDayAndSalesManId(String registerDay, Integer id) {
+        try {
+            return orderRepository.getOrderByRegisterDayAndSalesManId
+            (new SimpleDateFormat("yyyy-MM-dd").parse(registerDay), id);
+        }
+        catch (ParseException exception) {
+            exception.printStackTrace();
+            return null;
+        }
     }
     
     /**
-     * 
+     * Metodo para obtener y retornar una lista de todos los registros de
+     * documentos de ordenes, por los valores de los atributos 'status' y
+     * 'salesman.id' hacia el metodo 'getOrderByStatusAndSalesManId' del 
+     * OrderRepository.
      * @param status
      * @param id
      * @return 

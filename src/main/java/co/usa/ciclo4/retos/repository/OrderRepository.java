@@ -7,6 +7,8 @@ package co.usa.ciclo4.retos.repository;
 
 import co.usa.ciclo4.retos.dmodel.Order;
 import co.usa.ciclo4.retos.icrudrepository.OrderCrudRepository;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -110,7 +112,9 @@ public class OrderRepository {
     }   
     
     /**
-     * 
+     * Metodo para obtener y retornar una lista de todos los registros de
+     * documentos de ordenes, por el valor del atributo 'salesman.id' 
+     * hacia el metodo 'findByStalesMan_Id' del OrderCrudRepository.
      * @param id
      * @return 
      */
@@ -119,16 +123,22 @@ public class OrderRepository {
     }
 
     /**
-     * 
+     * Metodo para obtener y retornar una lista de todos los registros de
+     * documentos de ordenes, por los valores de los atributos 'registerDay' y
+     * 'salesman.id' hacia el metodo 'findByRegisterDayAndSalesMan_Id' del 
+     * OrderCrudRepository.
      * @param id
      * @return 
      */
     public List<Order> getOrderByRegisterDayAndSalesManId(Date registerDay, Integer id) {
-        return orderCrudRepository.findByRegisterDayAndSalesMan_Id(registerDay, id);
-    }
+            return orderCrudRepository.findByRegisterDayAndSalesMan_Id(registerDay, id);
+        }
     
     /**
-     * 
+     * Metodo para obtener y retornar una lista de todos los registros de
+     * documentos de ordenes, por los valores de los atributos 'status' y
+     * 'salesman.id' hacia el metodo 'findByStatusandSalesMan_Id' del 
+     * OrderCrudRepository.
      * @param status
      * @param id
      * @return 

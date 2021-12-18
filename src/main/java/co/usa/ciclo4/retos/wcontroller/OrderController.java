@@ -112,7 +112,7 @@ public class OrderController {
     /**
      * Metodo para obtener y retornar una lista de todos los registros de
      * documentos de ordenes, por el valor del atributo 'zone' 
-     * hacia el metodo 'getOrderByZone' del OrderService
+     * hacia el metodo 'getOrderByZone' del OrderService.
      * @param status
      * @return 
      */
@@ -122,7 +122,9 @@ public class OrderController {
     }
     
     /**
-     * 
+     * Metodo para obtener y retornar una lista de todos los registros de
+     * documentos de ordenes, por el valor del atributo 'salesman.id' 
+     * hacia el metodo 'getOrderBySalesManId' del OrderService.
      * @param id
      * @return 
      */
@@ -132,18 +134,24 @@ public class OrderController {
     }
     
     /**
-     * 
+     * Metodo para obtener y retornar una lista de todos los registros de
+     * documentos de ordenes, por los valores de los atributos 'registerDay' y
+     * 'salesman.id' hacia el metodo 'getOrderByRegisterDayAndSalesManId' del 
+     * OrderService.
      * @param registerDay
      * @param id
      * @return 
      */
     @GetMapping("/date/{registerDay}/{id}")
-    public List<Order> getOrdersByRegisterDayAndSalesManId(@PathVariable("registerDay") Date registerDay, @PathVariable("id") Integer id) {
+    public List<Order> getOrdersByRegisterDayAndSalesManId(@PathVariable("registerDay") String registerDay, @PathVariable("id") Integer id) {
         return orderService.getOrderByRegisterDayAndSalesManId(registerDay, id);
     }
 
     /**
-     * 
+     * Metodo para obtener y retornar una lista de todos los registros de
+     * documentos de ordenes, por los valores de los atributos 'status' y
+     * 'salesman.id' hacia el metodo 'getOrderByStatusAndSalesManId' del 
+     * OrderService.
      * @param status
      * @param id
      * @return 
